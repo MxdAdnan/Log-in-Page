@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <script src="https://kit.fontawesome.com/54d274a042.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <video autoplay muted loop id="background-video">
+    <source src="vid3.mp4" type="video/mp4">
+   
+  </video>
+
+  <div class="login-container">
+    <div class="icons">
+        <h2>Welcome<i class="fa-solid fa-ghost"></i></h2>
+    </div>
+
+    <div class="input-group">
+      <label for="Firstname">Firstname:</label>
+      <input type="text" id="Firstname" placeholder="Enter your Firstname ">
+    </div>
+    <div class="input-group">
+        <label for="Lastname">Lastname:</label>
+        <input type="text" id="Lastname" placeholder="Enter your Lastname ">
+      </div>
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password">
+    </div>
+    <div class="input-group">
+        <label for="Confirm-Password"> Confirm-Password:</label>
+        <input type="password" id="Confirm-Password" placeholder="Repeat the above password">
+      </div>
+    <button class="login-btn" onclick="validateLogin()">Login</button>
+    <p class="error-message" id="error-message"></p>
+  </div>
+
+  <script>
+    function validateLogin() {
+  var Firstname = document.getElementById('Firstname').value;
+  var Lastname = document.getElementById('Lastname').value;
+  var password = document.getElementById('password').value;
+  var ConfirmPassword = document.getElementById('Confirm-Password').value;
+  var errorMessage = document.getElementById('error-message');
+
+  if (Firstname === '' || Lastname === '' || password === '' || ConfirmPassword === '') {
+    errorMessage.textContent = 'Please Enter Correct Details.';
+    errorMessage.style.color = 'red';
+  } else if (password !== ConfirmPassword) {
+    errorMessage.textContent = 'Password and Confirm Password do not match.';
+    errorMessage.style.color = 'red';
+  } else {
+    errorMessage.textContent = 'Login successful!';
+    errorMessage.style.color = 'green';
+
+   
+    setTimeout(resetLoginForm, 2000);
+  }
+}
+
+function resetLoginForm() {
+  document.getElementById('Firstname').value = '';
+  document.getElementById('Lastname').value = '';
+  document.getElementById('password').value = '';
+  document.getElementById('Confirm-Password').value = '';
+  document.getElementById('error-message').textContent = '';
+}
+
+  </script>
+</body>
+</html>
